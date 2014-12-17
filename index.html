@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PSB MCC</title>
+<link rel="stylesheet" href="res/style.css">
+</head>
+<body style="text-align: center">
+<h1>Букмарклет для &laquo;умных денег&raquo; ПСБ</h1>
+<p>Выберите категорию: <label class="select"><select id="cat">
+    <option value="groc">супермаркеты</option>
+    <option value="avia">путешествия</option>
+    <option value="fuel">топливо</option>
+    <option value="garm">одежда</option>
+    <option value="home">ремонт</option>
+</select></label></p>
+<p>Перетяните на панель закладок: <a href="" class="button" id="bmark">PSB MCC</a></p>
+<p>Запускать на странице <a href="https://pfm.psbank.ru/Transactions">Транзакции</a></p>
+
+<script type="text/javascript" src="res/data.js"></script>
+<script type="text/javascript">
+var cat = document.getElementById('cat'),
+    link = document.getElementById('bmark'),
+    toggle = function() {
+        link.href = "javascript:(function(cat){"+script+"})('"+cat.value+"');void(0)";
+    };
+toggle();
+if (cat.addEventListener) {
+    cat.addEventListener('change', toggle);
+} else {
+    cat.attachEvent('onchange', toggle);
+}
+</script>
+</body>
+</html>
