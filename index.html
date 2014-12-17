@@ -22,7 +22,7 @@
 var cat = document.getElementById('cat'),
     link = document.getElementById('bmark'),
     toggle = function() {
-        link.href = 'javascript:(function(){var%20isBonus='+bonus[cat.value]+';'+script+'})();void(0)';
+        link.href = "javascript:(function(cat){"+script+"})('"+cat.value+"');void(0)";
     };
 toggle();
 if (cat.addEventListener) {
