@@ -16,20 +16,6 @@
 </select></label></p>
 <p>Перетяните на панель закладок: <a href="" class="button" id="bmark">PSB MCC</a></p>
 <p>Запускать на странице <a href="https://pfm.psbank.ru/Transactions">Транзакции</a></p>
-
-<script type="text/javascript" src="res/data.js"></script>
-<script type="text/javascript">
-var cat = document.getElementById('cat'),
-    link = document.getElementById('bmark'),
-    toggle = function() {
-        link.href = "javascript:(function(cat){"+script+"})('"+cat.value+"');void(0)";
-    };
-toggle();
-if (cat.addEventListener) {
-    cat.addEventListener('change', toggle);
-} else {
-    cat.attachEvent('onchange', toggle);
-}
-</script>
+<script src="res/script.js"></script>
 </body>
 </html>
