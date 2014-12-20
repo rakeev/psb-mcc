@@ -1,6 +1,3 @@
-# Букмарклет для «умных денег» ПСБ
+# Коды MCC в ИБ Промсвязьбанка
 
-## Credits
-
-http://chriszarate.github.io/bookmarkleter
-http://blogbankir.ru/allinclusive.html
+[Букмарклет и инфо](https://rakeev.github.io/psb-mcc)
