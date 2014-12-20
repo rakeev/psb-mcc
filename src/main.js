@@ -27,7 +27,9 @@ var updateLayout = function(content) {
         var row = $('*[data-id=' + val.Id + ']');
         row.find('td[data-category] .data').prepend('<b>' + val.Mcc + '</b> ');
         if (isBonus(val.Mcc)) {
-            row.find('td[data-amount]').prepend('<b style="color: green">+5%</b> ');
+            var cell = row.find('td[data-amount]'),
+                bon = Math.abs(cell.data('amount')*0.05).toFixed(2);
+            cell.prepend('<b style="color: green" title="~'+bon+'">+5%</b> ');
         }
     });
 };
