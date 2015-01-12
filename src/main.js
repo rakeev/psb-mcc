@@ -11,12 +11,12 @@ var codes = {
 
 var isBonus = function(mcc) {
     return $.grep(codes[cat], function(val, idx) {
-            var chunks = (val + '').split('-');
-            if (chunks.length > 1) {
-                return (mcc >= chunks[0]) && (mcc <= chunks[1]);
-            }
-            return (val == mcc);
-        }).length > 0;
+        var chunks = (val + '').split('-');
+        if (chunks.length > 1) {
+            return (mcc >= chunks[0]) && (mcc <= chunks[1]);
+        }
+        return (val == mcc);
+    }).length > 0;
 };
 
 var updateLayout = function(content) {
