@@ -9,7 +9,7 @@ var codes = {
         '5712-5714', 5718, 5719, 5722, 7622, 7623, 7629, 7631, 7641, 7692, 7699]
 };
 
-var isBonus = function(mcc) {
+var isBonus = function(mcc, cat) {
     return $.grep(codes[cat], function(val, idx) {
         var chunks = (val + '').split('-');
         if (chunks.length > 1) {
@@ -21,16 +21,21 @@ var isBonus = function(mcc) {
 
 var updateLayout = function(content) {
     $.each(content.data.Transactions, function(idx, val) {
-        if (!val.Mcc) {
+        var dat = val.Data.match(/[0-9]{6}\.\.([0-9]{4})/);
+        if (!dat || !val.Mcc) {
             return true;
         }
         var row = $('*[data-id=' + val.Id + ']');
         row.find('td[data-category] .data').prepend('<b>' + val.Mcc + '</b> ');
-        if (isBonus(val.Mcc)) {
+        $.each(conf, function(card, cat) {
+            var valid = (card == dat[1]) || (card == '_');
+            if (!valid || !isBonus(val.Mcc, cat)) {
+                return true;
+            }
             var cell = row.find('td[data-amount]'),
                 bon = Math.abs(cell.data('amount')*0.05).toFixed(2);
             cell.prepend('<b style="color: green" title="~'+bon+'">+5%</b> ');
-        }
+        });
     });
 };
 

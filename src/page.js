@@ -2,7 +2,7 @@ var cat = document.getElementById('cat'),
     link = document.getElementById('bmark');
 
 function toggleBmark() {
-    link.href = "javascript:(function(cat){"+code+"})('"+cat.value+"');void(0)";
+    link.href = "javascript:(function(conf){"+code+"})({_:'"+cat.value+"'});void(0)";
 }
 
 toggleBmark();
