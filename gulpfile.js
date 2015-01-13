@@ -13,15 +13,21 @@ gulp.task('js', function() {
         return 'var code = "'+qs.escape(cont)+'";';
     });
     gulp.src(scripts).pipe(plug.uglify()).pipe(plug.if(/main\.js$/, trans))
-        .pipe(plug.concat('script.js')).pipe(gulp.dest(path)).pipe(plug.notify('Rebuilt js'));
+        .pipe(plug.concat('script.js')).pipe(gulp.dest(path))
+        .pipe(plug.notify('Rebuilt js')).pipe(plug.livereload());
 });
 
 gulp.task('css', function() {
-    gulp.src(styles).pipe(plug.sass()).pipe(plug.rename('style.css')).pipe(plug.autoprefixer())
-        .pipe(plug.minifyCss()).pipe(gulp.dest(path)).pipe(plug.notify('Rebuilt css'));
+    gulp.src(styles).pipe(plug.sass()).pipe(plug.rename('style.css'))
+        .pipe(plug.autoprefixer()).pipe(plug.minifyCss()).pipe(gulp.dest(path))
+        .pipe(plug.notify('Rebuilt css')).pipe(plug.livereload());
 });
 
 gulp.task('watch', function() {
+    plug.livereload.listen();
+    gulp.watch('index.html', function(event) {
+        plug.livereload.changed(event.path);
+    });
     gulp.watch(scripts, ['js']);
     gulp.watch(styles, ['css']);
 });
