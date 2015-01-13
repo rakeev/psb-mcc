@@ -21,12 +21,11 @@ var isBonus = function(mcc, cat) {
 
 var updateLayout = function(content) {
     $.each(content.data.Transactions, function(idx, val) {
-        var dat = val.Data.match(/[0-9]{6}\.\.([0-9]{4})/);
+        var dat = val.Data.match(/[0-9]{6}\.\.([0-9]{4})/),
+            row = $('*[data-id='+val.Id+']');
         if (!dat || !val.Mcc) {
             return true;
         }
-        var row = $('*[data-id=' + val.Id + ']');
-        row.find('td[data-category] .data').prepend('<b>' + val.Mcc + '</b> ');
         $.each(conf, function(card, cat) {
             var valid = (card == dat[1]) || (card == '_');
             if (!valid || !isBonus(val.Mcc, cat)) {
@@ -36,6 +35,7 @@ var updateLayout = function(content) {
                 bon = Math.abs(cell.data('amount')*0.05).toFixed(2);
             cell.prepend('<b style="color: green" title="~'+bon+'">+5%</b> ');
         });
+        row.find('td[data-category] .data').prepend('<b>'+val.Mcc+'</b> ');
     });
 };
 
