@@ -5,8 +5,8 @@ var gulp = require('gulp'),
     qs = require('querystring');
 
 var path = 'res',
-    scripts = './src/*.js',
-    styles = ['node_modules/picnic/src/picnic.scss', './src/*.scss'];
+    scripts = 'src/*.js',
+    styles = ['node_modules/picnic/src/picnic.scss', 'src/*.scss'];
 
 gulp.task('js', function() {
     var trans = plug.insert.transform(function(cont) {
@@ -18,7 +18,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('css', function() {
-    gulp.src(styles).pipe(plug.sass()).pipe(plug.rename('style.css'))
+    gulp.src(styles).pipe(plug.sass()).pipe(plug.concat('style.css'))
         .pipe(plug.autoprefixer()).pipe(plug.minifyCss()).pipe(gulp.dest(path))
         .pipe(plug.notify('Rebuilt css')).pipe(plug.livereload());
 });
