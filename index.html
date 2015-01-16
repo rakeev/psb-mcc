@@ -5,16 +5,30 @@
 <title>PSB MCC</title>
 <link rel="stylesheet" href="res/style.css">
 </head>
-<body style="text-align: center">
+<body>
 <h1>Коды MCC в ИБ Промсвязьбанка</h1>
-<p>Выберите категорию: <label class="select"><select id="cat">
-    <option value="groc">супермаркеты</option>
-    <option value="avia">путешествия</option>
-    <option value="fuel">топливо</option>
-    <option value="garm">одежда</option>
-    <option value="home">ремонт</option>
-</select></label></p>
-<p>Перетяните на панель закладок: <a href="" class="button" id="bmark">PSB MCC</a></p>
+<article>
+    <span class="togl">Выберите категорию:</span>
+    <table class="center" id="cards">
+        <tr class="togl" style="display: none">
+            <th><b class="hint" title="Последние 4 цифры">Карта</b></th>
+            <th>Категория</th>
+        </tr><tr>
+            <td class="togl" style="display: none"><input type="text" size="4"></td>
+            <td><label class="select"><select>
+                <option value="groc">супермаркеты</option>
+                <option value="avia">путешествия</option>
+                <option value="fuel">топливо</option>
+                <option value="garm">одежда</option>
+                <option value="home">ремонт</option>
+            </select></label></td>
+        </tr>
+    </table>
+    <a class="act togl" style="display: none" id="addcard">добавить карту</a>
+    <a class="act togl" id="extmode">несколько счетов в разных категориях</a>
+    <p>Перетяните на панель закладок: <a href="" class="button" id="bmark">PSB MCC</a></p>
+</article>
+
 <p>Запускать в «Умных деньгах» на странице <a href="https://pfm.psbank.ru/Transactions">Транзакции</a></p>
 <p><img src="res/shot.png" alt="Скриншот"></p>
 <p><a href="https://github.com/rakeev/psb-mcc" class="button">GitHub</a>

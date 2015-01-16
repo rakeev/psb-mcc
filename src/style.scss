@@ -1,0 +1,39 @@
+body {
+    text-align: center;
+}
+
+article {
+    margin-bottom: 4em;
+}
+
+input,
+.select select {
+    background: #fff;
+}
+
+tr:nth-child(even) {
+    background: inherit;
+}
+
+tr:nth-child(odd) {
+    background: rgba(0, 0, 0, .05);
+}
+
+th,
+td {
+    padding: .3em .6em;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.hint {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+.act {
+    border-bottom: 1px dashed;
+    cursor: pointer;
+}
