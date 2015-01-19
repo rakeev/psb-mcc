@@ -4,12 +4,15 @@
 <meta charset="utf-8">
 <title>PSB MCC</title>
 <link rel="stylesheet" href="res/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <h1>Коды MCC в ИБ Промсвязьбанка</h1>
-<article>
-    <span class="togl">Выберите категорию:</span>
+
+<section>
+    <h2>Ваш букмарклет</h2>
     <table class="center" id="cards">
+        <caption class="togl">Выберите категорию:</caption>
         <tr class="togl" style="display: none">
             <th><b class="hint" title="Последние 4 цифры">Карта</b></th>
             <th>Категория</th>
@@ -24,15 +27,24 @@
             </select></label></td>
         </tr>
     </table>
-    <a class="act togl" style="display: none" id="addcard">добавить карту</a>
-    <a class="act togl" id="extmode">несколько счетов в разных категориях</a>
+    <div><a class="act togl" style="display: none" id="addcard">добавить карту</a>
+    <a class="act togl" id="extmode">несколько счетов в разных категориях</a></div>
     <p>Перетяните на панель закладок: <a href="" class="button" id="bmark">PSB MCC</a></p>
-</article>
+</section>
 
-<p>Запускать в «Умных деньгах» на странице <a href="https://pfm.psbank.ru/Transactions">Транзакции</a></p>
-<p><img src="res/shot.png" alt="Скриншот"></p>
-<p><a href="https://github.com/rakeev/psb-mcc" class="button">GitHub</a>
-<a href="http://www.banki.ru/forum/?PAGE_NAME=pm_edit&mode=new&UID=93927" class="button">Banki</a></p>
+<section>
+    <h2>Использование</h2>
+    <p><a href="https://support.mozilla.org/ru/kb/ispolzujte-bukmarklety-dlya-bystrogo-vypolneniya-z">
+        Что такое букмарклет и как его использовать</a></p>
+    <p>Запускать в «Умных деньгах» на странице <a href="https://pfm.psbank.ru/Transactions">Транзакции</a></p>
+    <p class="cover"><img src="res/shot.png" alt="Скриншот"></p>
+</section>
+
+<footer>
+    <p><a href="https://github.com/rakeev/psb-mcc" class="button">GitHub</a>
+        <a href="http://www.banki.ru/forum/?PAGE_NAME=pm_edit&mode=new&UID=93927" class="button">Banki</a></p>
+</footer>
+
 <script src="res/script.js"></script>
 </body>
 </html>
