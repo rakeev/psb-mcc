@@ -68,3 +68,7 @@ body > footer {
     border-bottom: 1px dashed;
     cursor: pointer;
 }
+
+.err {
+    background: mix($picnic-white, $picnic-error, 80%);
+}

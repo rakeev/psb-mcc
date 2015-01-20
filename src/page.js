@@ -17,16 +17,22 @@ bindEvent(document.getElementById('extmode'), 'click', function() {
 });
 
 bindEvent(document.getElementById('addcard'), 'click', function() {
-    var row = tab.querySelector('tr:last-child');
-    row.parentNode.appendChild(row.cloneNode(true));
+    var src = tab.querySelector('tr:last-child'),
+        row = src.cloneNode(true),
+        inp = row.querySelector('input');
+    inp.value = '';
+    inp.className = '';
+    src.parentNode.appendChild(row);
 });
 
-function toggleBmark() {
+function toggleBmark(event) {
     var conf = {},
         rows = tab.querySelectorAll('tr');
     for (var i=1; i<rows.length; i++) {
-        var card = rows[i].querySelector('input').value || '_';
+        var inp = rows[i].querySelector('input'),
+            card = inp.value || '_';
         conf[card] = rows[i].querySelector('select').value;
+        inp.className = (event && !/^[0-9]{4}$/.test(card))?'err':'';
     }
     link.href = "javascript:(function(conf){"+code+"})("+JSON.stringify(conf)+");void(0)";
 }
