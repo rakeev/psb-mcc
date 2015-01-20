@@ -18,7 +18,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('css', function() {
-    gulp.src(styles).pipe(plug.sass()).pipe(plug.concat('style.css'))
+    gulp.src(styles).pipe(plug.concat('style.css')).pipe(plug.sass())
         .pipe(plug.autoprefixer()).pipe(plug.minifyCss()).pipe(gulp.dest(path))
         .pipe(plug.notify('Rebuilt css')).pipe(plug.livereload());
 });
