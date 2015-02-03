@@ -47,3 +47,7 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 
 ga('create', 'UA-59229421-1', 'auto');
 ga('send', 'pageview');
+
+bindEvent(link, 'dragend', function() {
+    ga('send', 'event', 'button', 'dragend', 'bookmarklet');
+});
