@@ -6,7 +6,8 @@ var gulp = require('gulp'),
 
 var path = 'res',
     scripts = 'src/*.js',
-    styles = 'src/*.scss';
+    styles = 'src/*.scss',
+    verb = false;
 
 gulp.task('js', function() {
     var trans = plug.insert.transform(function(cont) {
@@ -18,19 +19,19 @@ gulp.task('js', function() {
         .pipe(plug.if(/main\.js$/, trans))
         .pipe(plug.concat('script.js'))
         .pipe(gulp.dest(path))
-        .pipe(plug.notify('Rebuilt js'))
+        .pipe(plug.if(verb, plug.notify('Rebuilt js')))
         .pipe(plug.livereload());
 });
 
 gulp.task('css', function() {
     gulp.src(styles)
-        .pipe(plug.concat('style.css'))
         .pipe(plug.sass())
         .on('error', console.warn)
+        .pipe(plug.concat('style.css'))
         .pipe(plug.autoprefixer())
         .pipe(plug.minifyCss())
         .pipe(gulp.dest(path))
-        .pipe(plug.notify('Rebuilt css'))
+        .pipe(plug.if(verb, plug.notify('Rebuilt css')))
         .pipe(plug.livereload());
 });
 
@@ -39,6 +40,7 @@ gulp.task('watch', function() {
     gulp.watch('index.html', function(event) {
         plug.livereload.changed(event.path);
     });
+    verb = true;
     gulp.watch(scripts, ['js']);
     gulp.watch(styles, ['css']);
 });
