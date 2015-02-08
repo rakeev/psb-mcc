@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 
 var path = 'res',
     scripts = 'src/*.js',
-    styles = ['node_modules/picnic/src/picnic.scss', 'src/*.scss'];
+    styles = 'src/*.scss';
 
 gulp.task('js', function() {
     var trans = plug.insert.transform(function(cont) {
