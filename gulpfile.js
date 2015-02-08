@@ -12,15 +12,26 @@ gulp.task('js', function() {
     var trans = plug.insert.transform(function(cont) {
         return 'var code = "'+qs.escape(cont)+'";';
     });
-    gulp.src(scripts).pipe(plug.uglify()).pipe(plug.if(/main\.js$/, trans))
-        .pipe(plug.concat('script.js')).pipe(gulp.dest(path))
-        .pipe(plug.notify('Rebuilt js')).pipe(plug.livereload());
+    gulp.src(scripts)
+        .pipe(plug.uglify())
+        .on('error', console.warn)
+        .pipe(plug.if(/main\.js$/, trans))
+        .pipe(plug.concat('script.js'))
+        .pipe(gulp.dest(path))
+        .pipe(plug.notify('Rebuilt js'))
+        .pipe(plug.livereload());
 });
 
 gulp.task('css', function() {
-    gulp.src(styles).pipe(plug.concat('style.css')).pipe(plug.sass())
-        .pipe(plug.autoprefixer()).pipe(plug.minifyCss()).pipe(gulp.dest(path))
-        .pipe(plug.notify('Rebuilt css')).pipe(plug.livereload());
+    gulp.src(styles)
+        .pipe(plug.concat('style.css'))
+        .pipe(plug.sass())
+        .on('error', console.warn)
+        .pipe(plug.autoprefixer())
+        .pipe(plug.minifyCss())
+        .pipe(gulp.dest(path))
+        .pipe(plug.notify('Rebuilt css'))
+        .pipe(plug.livereload());
 });
 
 gulp.task('watch', function() {
